@@ -1,0 +1,9 @@
+[run]
+source =
+    app
+    tests
+
+omit =
+    *__init__.py
+
+parallel = True
