@@ -19,6 +19,7 @@ def run_rs() -> None:
 
 
 @stub.function(
+    image=modal.Image.debian_slim().apt_install("ruby-full"),
     mounts=[
         modal.Mount.from_local_dir(
             local_path="./ruby",
@@ -27,8 +28,6 @@ def run_rs() -> None:
     ],
 )
 def run_rb() -> None:
-    subprocess.run(["apt", "update", "-y"])
-    subprocess.run(["apt", "install", "ruby-full", "-y"])
     subprocess.run(["chmod", "+x", "/root/ruby/app.rb"])
     subprocess.run(["ruby", "/root/ruby/app.rb"])
 
